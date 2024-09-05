@@ -21,16 +21,16 @@ export default function Home() {
   })
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-5xl absolute top-[25px] left-[25px]">The Chat</h1>
+    <main className="flex justify-center h-screen w-full">
+      <div className="flex flex-col h-full">
+        <ol className="flex flex-col-reverse gap-5 p-5 w-[1302px] h-[100%] overflow-y-auto custom-scrollbar">
+          {messages.map(({ text, author, createAt, id }, index) =>
+            <li key={index}><ContainerMessage text={text} id={id} createAt={createAt} author={author} /></li>
+          )}
+        </ol>
 
-      <ol className="flex flex-col-reverse gap-5 w-[1302px] overflow-y-auto custom-scrollbar">
-        {messages.map(({ text, author, createAt, id }, index) =>
-          <li key={index}><ContainerMessage text={text} id={id} createAt={createAt} author={author} /></li>
-        )}
-      </ol>
-
-      <Sender />
+        <Sender />
+      </div>
     </main>
   );
 }

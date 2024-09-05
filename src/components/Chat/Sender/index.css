@@ -8,6 +8,25 @@
   }
 
   .form-send-message .input {
-    @apply bg-[#383A40] focus:outline-none px-4 py-2.5 rounded-md text-[#D4D7DB] w-full resize-none custom-scrollbar
+    @apply bg-[#383A40] focus:outline-none px-4 py-2.5 rounded-md text-[#D4D7DB] w-full resize-none;
   }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #1A1B1E;
+  border-radius: 10px;
+  /* Borda arredondada */
+  border: 2px solid #1A1B1E;
+  /* Adicionando uma borda ao polegar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #2B2D31;
+  /* Cor do fundo do trilho */
+  border-radius: 10px;
+  /* Borda arredondada */
 }

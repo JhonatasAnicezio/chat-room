@@ -1,8 +1,6 @@
 import { Message } from "@/types/Message";
 import { IoPersonCircle } from "react-icons/io5";
 
-import './index.css';
-
 export default function ContainerMessage({ author, createAt, id, text }: Message) {
     return (
         <div className="container-message" id={id}>
