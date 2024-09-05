@@ -1,6 +1,13 @@
-textarea {
-    /* Ajusta a altura máxima para 10 linhas */
-    max-height: calc(10 * 1.5rem); /* Ajusta conforme a altura da linha */
-    /* Ajusta o espaçamento entre linhas para melhor centralização */
-    line-height: 1.5rem; /* Ajuste conforme necessário */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .form-send-message {
+    @apply flex items-center justify-center w-full p-5;
   }
+
+  .form-send-message .input {
+    @apply bg-[#383A40] focus:outline-none px-4 py-2.5 rounded-md text-[#D4D7DB] w-full resize-none custom-scrollbar
+  }
+}
