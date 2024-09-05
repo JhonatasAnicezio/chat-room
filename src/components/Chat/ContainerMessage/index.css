@@ -32,7 +32,7 @@
     }
 
     .text-message {
-        @apply text-sm;
+        @apply text-sm break-words;
     }
 }
 
