@@ -1,0 +1,6 @@
+textarea {
+    /* Ajusta a altura máxima para 10 linhas */
+    max-height: calc(10 * 1.5rem); /* Ajusta conforme a altura da linha */
+    /* Ajusta o espaçamento entre linhas para melhor centralização */
+    line-height: 1.5rem; /* Ajuste conforme necessário */
+  }
