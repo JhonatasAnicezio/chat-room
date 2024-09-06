@@ -5,7 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import './index.css';
 
-export default function Sender() {
+interface SenderProps {
+  username: string,
+}
+
+export default function Sender({ username }: SenderProps) {
   const { register, handleSubmit, reset } = useForm<FormSendMessageSchema>({
     resolver: zodResolver(formSendMessageSchema),
   });
@@ -15,7 +19,7 @@ export default function Sender() {
       id: `iddasala${new Date()}`,
       text: message,
       createAt: new Date(),
-      author: 'usuario teste',
+      author: username,
     });
 
     reset();
