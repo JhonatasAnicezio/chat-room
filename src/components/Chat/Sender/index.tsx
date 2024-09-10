@@ -15,7 +15,7 @@ export default function Sender({ username }: SenderProps) {
   });
 
   const sendMessage = ({ message }: FormSendMessageSchema) => {
-    socket.emit('message', {
+    socket.emit('send-message', {
       id: `iddasala${new Date()}`,
       text: message,
       createAt: new Date(),
