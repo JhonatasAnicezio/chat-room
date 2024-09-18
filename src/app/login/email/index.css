@@ -1,0 +1,15 @@
+@tailwind base;
+
+@layer base {
+    .container-login-email {
+        @apply flex flex-col justify-center gap-5 w-full h-screen items-center bg-[#0A0A0A] text-[#eeeeee]
+    }
+
+    .container-login-email h1 {
+        @apply text-3xl font-bold
+    }
+
+    .container-login-email a {
+        @apply flex justify-center text-sm text-[#3291ff]
+    }
+}
