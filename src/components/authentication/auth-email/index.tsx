@@ -46,7 +46,7 @@ export default function AuthEmail({ action, authType }: AuthEmailProps) {
                     className="input"
                 />
 
-                {errors.password && <span> {errors.password.message} </span>}
+                {errors.email && <span> {errors.email.message} </span>}
             </div>
 
             <div>

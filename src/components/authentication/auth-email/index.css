@@ -13,7 +13,7 @@
         @apply flex font-medium text-base items-center my-5 justify-center gap-2 w-full h-12 rounded-xl text-black bg-[#eeeeee]
     }
 
-    .form-email .span {
+    .form-email span {
         @apply text-xs text-red-500 pl-1
     }
 }
