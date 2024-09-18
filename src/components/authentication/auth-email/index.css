@@ -1,0 +1,15 @@
+@tailwind base;
+
+@layer base {
+    .form-email {
+        @apply flex flex-col justify-center gap-3
+    }
+
+    .form-email .input {
+        @apply flex font-medium pl-4 text-base items-center justify-center gap-2 w-96 h-12 rounded-xl bg-transparent border border-[#333333]
+    }
+
+    .form-email .submit {
+        @apply flex font-medium text-base items-center my-5 justify-center gap-2 w-96 h-12 rounded-xl text-black bg-[#eeeeee]
+    }
+}
