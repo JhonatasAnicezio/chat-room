@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const clients = axios.create({
+export const authApi = axios.create({
   baseURL: 'http://localhost:3000/authentication',
 });
