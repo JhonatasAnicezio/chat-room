@@ -5,18 +5,36 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 import './index.css'
 
-export default function AuthEmail() {
+interface AuthEmailProps {
+    authType: 'register' | 'singIn';
+    action: (payload: AuthEmailSchema) => any | void;
+}
+
+export default function AuthEmail({ action, authType }: AuthEmailProps) {
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setError,
     } = useForm<AuthEmailSchema>({
         resolver: zodResolver(authEmailSchema),
     });
 
+    const submitEmailAction = async ({ email, password }: AuthEmailSchema) => {
+        try {
+            const result = await action({ email, password });
+
+            return result;
+        } catch (error) {
+            if (error instanceof Error) {
+                setError('password', { type: 'manual', message: error.message });
+            }
+        }
+    }
+
     return (
         <form
-            onSubmit={handleSubmit((data) => console.log(data))}
+            onSubmit={handleSubmit(submitEmailAction)}
             className="form-email"
         >
 
@@ -28,11 +46,7 @@ export default function AuthEmail() {
                     className="input"
                 />
 
-                {errors.email &&
-                    <span className="text-xs text-red-500 pl-1">
-                        {errors.email.message}
-                    </span>
-                }
+                {errors.password && <span> {errors.password.message} </span>}
             </div>
 
             <div>
@@ -44,18 +58,14 @@ export default function AuthEmail() {
                     className="input"
                 />
 
-                {errors.password &&
-                    <span className="text-xs text-red-500 pl-1">
-                        {errors.password.message}
-                    </span>
-                }
+                {errors.password && <span> {errors.password.message} </span>}
             </div>
 
             <button
                 type="submit"
                 className="submit"
             >
-                Entrar
+                {authType}
             </button>
         </form>
     )
