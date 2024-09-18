@@ -4,6 +4,6 @@
 
 @layer base {
     .root-layout {
-        @apply flex flex-col justify-center items-center w-full h-screen bg-[#313338] text-white;
+        @apply flex flex-col justify-center gap-5 w-full h-screen items-center bg-[#0A0A0A] text-[#eeeeee];
     }
 }
