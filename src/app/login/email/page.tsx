@@ -5,18 +5,16 @@ import './index.css';
 
 export default function Email() {
     return (
-        <main className="container-main">
-            <div className="container-login-email">
-                <h1>
-                    Entrar no Chat
-                </h1>
+        <div className="container-login-email">
+            <h1>
+                Entrar no Chat
+            </h1>
 
-                <AuthEmail />
+            <AuthEmail />
 
-                <Link href={'/register'}>
-                    Não possui conta? cadastre-se
-                </Link>
-            </div>
-        </main>
+            <Link href={'/register'}>
+                Não possui conta? cadastre-se
+            </Link>
+        </div>
     )
 }

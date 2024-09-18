@@ -1,10 +1,6 @@
 @tailwind base;
 
 @layer base {
-    .container-main {
-        @apply flex flex-col justify-center gap-5 w-full h-screen items-center bg-[#0A0A0A] text-[#eeeeee]
-    }
-
     .container-login-email {
         @apply flex flex-col justify-center gap-5 w-96 h-screen items-center
     }
