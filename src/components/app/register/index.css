@@ -1,0 +1,23 @@
+@tailwind base;
+
+@layer base {
+    .container-verify-email {
+        @apply flex flex-col gap-5 items-center
+    }
+
+    .div-icon {
+        @apply p-8 rounded-full bg-[#24292E]
+    }
+
+    .title {
+        @apply text-4xl
+    }
+
+    .attention {
+        @apply w-[50%] text-center text-sm
+    }
+
+    .container-verify-email a {
+        @apply flex justify-center text-sm text-[#3291ff]
+    }
+}
