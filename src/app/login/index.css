@@ -1,0 +1,35 @@
+@tailwind base;
+
+@layer base {
+    .container-login {
+        @apply flex flex-col justify-center items-center
+    }
+
+    .container-login h1 {
+        @apply text-3xl font-bold
+    }
+
+    .div-providers {
+        @apply flex flex-col gap-2 py-5
+    }
+
+    .div-providers button {
+        @apply flex font-medium text-base items-center justify-center gap-2 w-80 h-12 rounded-xl
+    }
+
+    .div-providers svg {
+        @apply w-5 h-5
+    }
+
+    .div-continue-email {
+        @apply flex flex-col gap-4 py-5 border-t border-[#333333]
+    }
+
+    .div-continue-email .continue-email {
+        @apply flex font-medium text-base items-center justify-center gap-2 w-80 h-12 rounded-xl border border-[#333333]
+    }
+
+    .div-continue-email .to-register {
+        @apply flex justify-center text-sm text-[#3291ff]
+    }
+}
