@@ -35,7 +35,7 @@ export default function Register() {
 
                 <AuthEmail authType="register" action={singUp} />
 
-                <div className="div-middleware">
+                {/* <div className="div-middleware">
                     <div />
                     <p>ou</p>
                 </div>
@@ -64,7 +64,7 @@ export default function Register() {
                         </button>
 
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <Link href={'/login'} className="to-login">

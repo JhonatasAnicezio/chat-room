@@ -1,15 +1,10 @@
 'use client'
 import Chat from "@/components/Chat";
 import Sender from "@/components/Chat/Sender";
-import Profile from "@/components/Profile";
 import { useState } from "react";
 
 export default function Home() {
-  const [username, setUsername] = useState<string>();
-
-  if(!username) {
-    return (<Profile setUsername={setUsername} />)
-  }
+  const [username, setUsername] = useState<string>('anonymous');
 
   return (
     <main className="flex justify-center h-screen w-full">

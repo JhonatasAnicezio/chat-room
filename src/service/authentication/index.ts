@@ -7,6 +7,7 @@ export async function singIn({ email, password }: AuthEmailSchema) {
     try {
         const { data } = await authApi.post<AxiosResponse>('/sing-in', { email, password });
 
+        console.log(data);
         return data;
     } catch (error: AxiosError | unknown) {
         if(error instanceof AxiosError) {

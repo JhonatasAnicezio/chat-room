@@ -12,7 +12,7 @@ export default function Login() {
 
             <div>
 
-                <div className="div-providers">
+                {/* <div className="div-providers">
                     <button className="bg-[#24292E]">
                         <FaGithub className="w-5 h-5" />
                         <span>
@@ -34,7 +34,7 @@ export default function Login() {
                         </span>
                     </button>
 
-                </div>
+                </div> */}
 
                 <div className="div-continue-email">
 

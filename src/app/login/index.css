@@ -22,7 +22,7 @@
     }
 
     .div-continue-email {
-        @apply flex flex-col gap-4 py-5 border-t border-[#333333]
+        @apply flex flex-col gap-4 py-5 /* border-t border-[#333333] */
     }
 
     .div-continue-email .continue-email {
