@@ -1,0 +1,31 @@
+@tailwind base;
+
+@layer base {
+    .container-header {
+        @apply flex w-full justify-between items-center px-10 py-3 top-0 bg-[#18181B] text-white
+    }
+
+    .container-header h1 {
+        @apply font-extrabold
+    }
+
+    .container-header .container-input {
+        @apply flex
+    }
+
+    .container-header .container-input input {
+        @apply h-8 w-72 px-2 text-sm bg-transparent border-[1px] rounded-l-[5px] border-[#646363] focus:outline-none
+    }
+
+    .container-header .container-input button {
+        @apply flex items-center justify-center h-8 w-8 rounded-r-[5px] bg-[#2F2F35]
+    }
+
+    .container-header .container-auth {
+        @apply flex gap-2 text-sm font-medium
+    }
+
+    .container-header .container-auth a {
+        @apply px-3 py-1 rounded-[5px]
+    }
+}
