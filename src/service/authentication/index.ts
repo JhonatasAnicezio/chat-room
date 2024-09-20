@@ -1,3 +1,4 @@
+"use server"
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
 import { authApi } from "../api";
 import { AxiosError, AxiosResponse } from "axios";
@@ -7,7 +8,6 @@ export async function singIn({ email, password }: AuthEmailSchema) {
     try {
         const { data } = await authApi.post<AxiosResponse>('/sing-in', { email, password });
 
-        console.log(data);
         return data;
     } catch (error: AxiosError | unknown) {
         if(error instanceof AxiosError) {
