@@ -22,9 +22,7 @@ export default function AuthEmail({ action, authType }: AuthEmailProps) {
 
     const submitEmailAction = async ({ email, password }: AuthEmailSchema) => {
         try {
-            const result = await action({ email, password });
-
-            return result;
+            await action({ email, password });
         } catch (error) {
             if (error instanceof Error) {
                 setError('password', { type: 'manual', message: error.message });
