@@ -1,5 +1,5 @@
 export interface User {
-    token: string,
+    token: Token,
     user: [ Profile ]
 }
 
@@ -11,3 +11,5 @@ export interface Profile {
     phoneNumber: string | null,
     photoURL: string | null
 }
+
+export type Token = string;
