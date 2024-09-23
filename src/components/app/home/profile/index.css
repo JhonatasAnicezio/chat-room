@@ -2,6 +2,38 @@
 
 @layer base {
     .container-profile {
-        @apply w-[20%] bg-[#2F2F2F]
+        @apply w-[20%] bg-[#1E1F22]
+    }
+
+    .container-profile .banner {
+        @apply w-full h-[20%] bg-[#5F5745]
+    }
+
+    .container-profile .description {
+        @apply w-full relative
+    }
+
+    .container-profile .photo-user {
+        @apply w-24 h-24 rounded-full bg-black absolute mx-8 top-[-50px] border-[6px] border-[#1E1F22]
+    }
+
+    .container-profile .button-edit {
+        @apply px-3 py-1 rounded-sm text-sm text-white bg-[#505BDB] hover:bg-[#4954cf] transition-all duration-200 absolute right-5 top-2
+    }
+
+    .container-profile .info {
+        @apply w-full h-52 py-16 px-4
+    }
+
+    .container-profile .info .info-children {
+        @apply flex flex-col bg-[#2B2D31] rounded-lg gap-4 p-4 text-white
+    }
+
+    .container-profile .info .info-children h3 {
+        @apply text-xs font-extrabold text-[#B5B8A1]
+    }
+
+    .container-profile .info .info-children p {
+        @apply text-sm
     }
 }
