@@ -1,5 +1,6 @@
 import Link from "next/link";
 import './index.css';
+import Profile from "@/components/app/home/profile";
 
 export default function Home() {
   const arr = new Array(1).fill(0);
@@ -7,7 +8,7 @@ export default function Home() {
   return (
     <main className="container-home">
       <div className="div-home">
-        <div className="container-profile" />
+        <Profile />
 
         <section className="container-rooms">
           <div className="div-description">

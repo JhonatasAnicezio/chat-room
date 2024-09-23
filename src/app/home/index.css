@@ -9,10 +9,6 @@
         @apply flex w-full h-full
     }
 
-    .container-profile {
-        @apply w-[20%] bg-[#2F2F2F]
-    }
-
     .container-rooms {
         @apply flex flex-col gap-5 w-[80%] p-10 overflow-auto
     }
