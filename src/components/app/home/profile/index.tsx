@@ -1,6 +1,15 @@
+'use client'
+import { useContext } from 'react';
+import { UserContext } from '@/context/User/user-context';
 import './index.css';
 
 export default function Profile() {
+    const { user } = useContext(UserContext);
+
+    if (!user) {
+        return null;
+    }
+
     return (
         <div className="container-profile">
             <div className='banner' />
@@ -15,15 +24,15 @@ export default function Profile() {
                     <div className='info-children'>
                         <div>
                             <h3>NOME EXIBIDO</h3>
-                            <p>Photosynthesis</p>
+                            <p>{ user.displayName }</p>
                         </div>
                         <div>
                             <h3>E-MAIL</h3>
-                            <p>jhonatasanic@hotmail.com</p>
+                            <p>{ user.email }</p>
                         </div>
                         <div>
                             <h3>TELEFONE</h3>
-                            <p>(16)992219948</p>
+                            <p>{ user.phoneNumber }</p>
                         </div>
                     </div>
                 </div>
