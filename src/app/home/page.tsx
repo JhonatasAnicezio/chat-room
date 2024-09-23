@@ -18,7 +18,7 @@ export default function Home() {
 
           <div className="rooms">
             {arr.map((_e, index) => (
-              <Link key={index} href={'/login'} className="flex flex-col gap-1 w-[19.5%]">
+              <Link key={index} href={'/chat/chatemconstrução'} className="flex flex-col gap-1 w-[19.5%]">
                 <div className="py-1 w-full h-[165px] bg-black"></div>
 
                 <h2 className="font-semibold">Sala aleatoria! Sala de bate papo aleatora</h2>
