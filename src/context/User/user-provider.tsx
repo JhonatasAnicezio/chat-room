@@ -1,13 +1,13 @@
 'use client'
 import React, { useState } from "react";
 import { UserContext } from "./user-context";
-import { User } from "@/types/User";
+import { Profile } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
 import { singIn } from "@/service/authentication";
 import { useRouter } from "next/navigation";
 
 export default function UserProvider({ children }: Readonly<{ children: React.ReactNode }>) {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<Profile | null>(null);
 
     const router = useRouter();
 
@@ -17,8 +17,13 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         if(!data) {
             throw new Error('Usuario não encontrado');
         }
+
+        const { user } = data;
+        const { token } = data;
         
-        setUser(data);
+        localStorage.setItem('token-auth', token)
+        
+        setUser(user[0]);
         router.push('/');
     }
 
