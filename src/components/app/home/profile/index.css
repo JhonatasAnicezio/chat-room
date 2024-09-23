@@ -1,0 +1,7 @@
+@tailwind base;
+
+@layer base {
+    .container-profile {
+        @apply w-[20%] bg-[#2F2F2F]
+    }
+}
