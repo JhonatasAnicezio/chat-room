@@ -12,11 +12,11 @@ export default function Ancor() {
 
     return (
         <>
-            <Link href={'/login'} className="bg-[#2F2F35]">
+            <Link href={'/auth/login'} className="bg-[#2F2F35]">
                 Entrar
             </Link>
 
-            <Link href={'/register'} className="text-[#2F2F35] bg-[#eeeeee]">
+            <Link href={'/auth/register'} className="text-[#2F2F35] bg-[#eeeeee]">
                 Cadastre-se
             </Link>
         </>
