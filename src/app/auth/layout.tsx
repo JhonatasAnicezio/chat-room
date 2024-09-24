@@ -12,9 +12,10 @@ export default function Layout({
     children: React.ReactNode;
 }>) {
     const { user } = useContext(UserContext);
+    const router = useRouter();
 
     if (user) {
-        useRouter().push('/');
+        router.push('/');
     }
 
     return (

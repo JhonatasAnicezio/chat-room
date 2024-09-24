@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserContext } from "./user-context";
 import { Profile, Token } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
@@ -42,6 +42,14 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         setUser(user[0]);
         router.push('/');
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token-auth');
+
+        if(token) {
+            setUserWithToken(token);
+        }
+    })
 
     const value = {
         user,
