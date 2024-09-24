@@ -1,0 +1,7 @@
+@tailwind base;
+
+@layer base {
+    .auth-layout {
+        @apply flex flex-col w-full h-screen justify-center items-center bg-[#0A0A0A] text-white
+    }
+}

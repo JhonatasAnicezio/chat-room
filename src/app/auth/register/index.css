@@ -1,0 +1,47 @@
+@tailwind base;
+
+@layer base {
+    .register-layout {
+        @apply flex flex-col w-full h-screen justify-center items-center bg-[#0A0A0A] text-white
+    }
+
+    .container-register {
+        @apply flex flex-col justify-center items-center
+    }
+
+    .div-register {
+        @apply flex flex-col w-80
+    }
+
+    .div-register h1 {
+        @apply text-3xl font-bold my-5 text-center
+    }
+
+    .div-middleware {
+        @apply flex items-center justify-center w-full relative
+    }
+
+    .div-middleware div {
+        @apply w-full border-b border-[#4d4c4c] absolute z-0
+    }
+
+    .div-middleware p {
+        @apply px-5 z-10 bg-[#0A0A0A]
+    }
+
+    .div-providers-register {
+        @apply flex flex-col gap-2 py-5
+    }
+
+    .div-providers-register button {
+        @apply flex font-medium text-base items-center justify-center gap-2 w-full h-12 rounded-xl
+    }
+
+    .div-providers-register svg {
+        @apply w-5 h-5
+    }
+
+    .to-login {
+        @apply flex justify-center text-sm text-[#3291ff]
+    }
+}
