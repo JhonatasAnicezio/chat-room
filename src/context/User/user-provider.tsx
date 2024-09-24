@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { UserContext } from "./user-context";
 import { Profile, Token } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
@@ -27,7 +27,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         router.push('/');
     }
 
-    const setUserWithToken = async (tokenLocal: Token) => {
+    const setUserWithToken = useCallback(async (tokenLocal: Token) => {
         const data = await singInWithToken(tokenLocal);
 
         if (!data) {
@@ -41,7 +41,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
         setUser(user[0]);
         router.push('/');
-    }
+    }, []);
 
     useEffect(() => {
         const token = localStorage.getItem('token-auth');
@@ -49,7 +49,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         if(token) {
             setUserWithToken(token);
         }
-    })
+    }, []);
 
     const value = {
         user,

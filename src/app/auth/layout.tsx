@@ -14,9 +14,11 @@ export default function Layout({
     const { user } = useContext(UserContext);
     const router = useRouter();
 
-    if (user) {
-        router.push('/');
-    }
+    useEffect(() => {
+        if (user) {
+            router.push('/');
+        }
+    }, [user, router]);
 
     return (
         <div className={`auth-layout`}>
