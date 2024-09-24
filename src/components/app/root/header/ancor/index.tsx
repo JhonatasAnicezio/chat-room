@@ -4,10 +4,20 @@ import Link from "next/link";
 import { useContext } from "react";
 
 export default function Ancor() {
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
 
     if(user) {
-        return null;
+        return (
+            <button
+                onClick={() => {
+                    setUser(null);
+                    localStorage.removeItem('token-auth');
+                }}
+                className="bg-red-500 px-5 py-0.5 rounded-sm"
+            >
+                Sair
+            </button>
+        )
     }
 
     return (

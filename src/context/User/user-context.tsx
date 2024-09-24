@@ -4,7 +4,7 @@ import { createContext } from "react";
 
 interface UserContext {
     user: Profile | null,
-    setUser: (user: Profile) => void,
+    setUser: (user: Profile | null) => void,
     setUserWithSingIn: (payload: AuthEmailSchema) => void,
     setUserWithToken: (token: string) => void,
 }
