@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 import './index.css';
+import Ancor from "./ancor";
 
 export default function Header() {
     return (
@@ -19,13 +19,7 @@ export default function Header() {
             </div>
 
             <div className="container-auth">
-                <Link href={'/login'} className="bg-[#2F2F35]">
-                    Entrar
-                </Link>
-
-                <Link href={'/register'} className="text-[#2F2F35] bg-[#eeeeee]">
-                    Cadastre-se
-                </Link>
+                <Ancor />
             </div>
         </header>
     )
