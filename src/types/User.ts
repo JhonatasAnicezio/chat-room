@@ -6,7 +6,7 @@ export interface User {
 export interface Profile {
     providerId: string,
     uid: string,
-    displayName: string | null,
+    displayName: string,
     email: string,
     phoneNumber: string | null,
     photoURL: string | null
