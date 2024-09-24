@@ -27,10 +27,14 @@ export default function Profile() {
 
                 <div className='info'>
                     <div className='info-children'>
-                        <div>
-                            <h3>NOME EXIBIDO</h3>
-                            <p>{user.displayName}</p>
-                        </div>
+                        {
+                            user.displayName &&
+
+                            <div>
+                                <h3>NOME EXIBIDO</h3>
+                                <p>{user.displayName}</p>
+                            </div>
+                        }
                         <div>
                             <h3>E-MAIL</h3>
                             <p>{user.email}</p>
