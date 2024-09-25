@@ -1,16 +1,33 @@
+'use client';
 import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
 
 import './index.css';
+import { useContext } from "react";
+import { UserContext } from "@/context/User/user-context";
+import { useForm } from "react-hook-form";
+import { editProfileSchema, EditProfileSchema } from "./edit-profile-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 
 export function DialogEdit() {
+    const { user, updateName } = useContext(UserContext);
+
+    const router = useRouter();
+
+    const {
+        register,
+        handleSubmit,
+    } = useForm<EditProfileSchema>({
+        resolver: zodResolver(editProfileSchema),
+    });
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -23,27 +40,26 @@ export function DialogEdit() {
                         Faça alterações em seu perfil aqui. Clique em salvar quando terminar.
                     </DialogDescription>
                 </DialogHeader>
-                <div className="div-content">
+                <form
+                    onSubmit={handleSubmit(({ displayName }) => {
+                        updateName(displayName);
+                        router.push('/');
+                    })}
+                    className="form-content-dialog"
+                >
                     <div>
                         <label htmlFor="name">
                             NOME EXIBIDO
                         </label>
                         <input
+                            {...register('displayName')}
+                            defaultValue={user ? user.displayName : ''}
                             id="display-name"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="username">
-                            TELEFONE
-                        </label>
-                        <input
-                            id="phone"
-                        />
-                    </div>
-                </div>
-                <DialogFooter>
+
                     <button type="submit" className="btn-save">Salvar</button>
-                </DialogFooter>
+                </form>
             </DialogContent>
         </Dialog>
     )
