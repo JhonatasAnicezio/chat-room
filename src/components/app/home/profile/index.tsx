@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { UserContext } from '@/context/User/user-context';
 import './index.css';
 import Image from 'next/image';
+import { DialogEdit } from './dialog-edit';
 
 export default function Profile() {
     const { user } = useContext(UserContext);
@@ -21,9 +22,7 @@ export default function Profile() {
                         <Image alt='img profile' className='rounded-full' src={user.photoURL} width={100} height={100} />
                     }
                 </div>
-                <button className='button-edit'>
-                    Editar perfil
-                </button>
+                <DialogEdit />
 
                 <div className='info'>
                     <div className='info-children'>

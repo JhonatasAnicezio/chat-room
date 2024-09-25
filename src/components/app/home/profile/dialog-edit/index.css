@@ -1,0 +1,27 @@
+@tailwind base;
+
+@layer base {
+    .container-dialog {
+        @apply bg-[#18181B] border-none text-white
+    }
+
+    .div-content {
+        @apply grid gap-4 py-4
+    }
+
+    .div-content div {
+        @apply grid grid-cols-4 items-center gap-4
+    }
+
+    .div-content div label {
+        @apply text-xs font-extrabold text-[#B5B8A1]
+    }
+
+    .div-content div input {
+        @apply col-span-3 rounded-sm px-2 py-1 bg-[#2B2D31] focus:outline-none font-light
+    }
+
+    .container-dialog .btn-save {
+        @apply px-3 py-0.5 bg-green-600 text-white rounded-sm text-base font-semibold
+    }
+}
