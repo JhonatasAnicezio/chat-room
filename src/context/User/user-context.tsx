@@ -8,6 +8,7 @@ interface UserContext {
     setUserWithSingIn: (payload: AuthEmailSchema) => void,
     setUserWithToken: (token: string) => void,
     isLoading: boolean,
+    updateName: (name: string) => void,
 }
 
 export const UserContext = createContext({} as UserContext);

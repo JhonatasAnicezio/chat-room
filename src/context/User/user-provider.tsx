@@ -3,12 +3,13 @@ import React, { useCallback, useEffect, useState } from "react";
 import { UserContext } from "./user-context";
 import { Profile, Token } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
-import { singIn, singInWithToken } from "@/service/authentication";
+import { singIn, singInWithToken, updateDisplayName } from "@/service/authentication";
 import { useRouter } from "next/navigation";
 
 export default function UserProvider({ children }: Readonly<{ children: React.ReactNode }>) {
     const [user, setUser] = useState<Profile | null>(null);
     const [ isLoading, setLoading ] = useState<boolean>(true);
+    const [token, setToken] = useState<string | null>(null);
 
     const router = useRouter();
 
@@ -38,11 +39,24 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         const { user } = data;
         const { token } = data;
 
+        setToken(token);
         localStorage.setItem('token-auth', token)
 
         setUser(user[0]);
         router.push('/');
     }, []);
+
+    const updateName = useCallback(async (name: string) => {
+        setLoading(true);
+        await updateDisplayName(name);
+
+        if(token)
+        await setUserWithToken(token);
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000)
+    }, [])
 
     useEffect(() => {
         const token = localStorage.getItem('token-auth');
@@ -52,8 +66,10 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
             if(token) {
                 await setUserWithToken(token);
             }
-    
-            setLoading(false)
+
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000);
         }
         
         getUser();
@@ -66,6 +82,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         setUserWithSingIn,
         setUserWithToken,
         isLoading,
+        updateName,
     };
 
     return (
