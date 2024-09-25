@@ -47,3 +47,15 @@ export async function singInWithToken(token: Token) {
         }
     }
 }
+
+export async function updateDisplayName(name: string) {
+    try {
+        await authApi.put('/display-name', { name });
+    } catch (error: AxiosError | unknown) {
+        if(error instanceof AxiosError) {
+            const message = error.response?.data.message;
+
+            throw new Error(message)
+        }
+    }
+}
