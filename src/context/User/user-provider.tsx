@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 export default function UserProvider({ children }: Readonly<{ children: React.ReactNode }>) {
     const [user, setUser] = useState<Profile | null>(null);
-    const [ isLoading, setLoading ] = useState<boolean>(true);
+    const [isLoading, setLoading] = useState<boolean>(true);
     const [token, setToken] = useState<string | null>(null);
 
     const router = useRouter();
@@ -46,17 +46,17 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         router.push('/');
     }, []);
 
-    const updateName = useCallback(async (name: string) => {
+    const updateName = async (name: string) => {
         setLoading(true);
         await updateDisplayName(name);
 
-        if(token)
-        await setUserWithToken(token);
+        if (user)
+        setUser({ ...user, displayName: name });
 
         setTimeout(() => {
             setLoading(false);
-        }, 2000)
-    }, [])
+        }, 1000)
+    }
 
     useEffect(() => {
         const token = localStorage.getItem('token-auth');
