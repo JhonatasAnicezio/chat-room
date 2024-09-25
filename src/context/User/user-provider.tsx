@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 
 export default function UserProvider({ children }: Readonly<{ children: React.ReactNode }>) {
     const [user, setUser] = useState<Profile | null>(null);
+    const [ isLoading, setLoading ] = useState<boolean>(true);
 
     const router = useRouter();
 
@@ -46,9 +47,17 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
     useEffect(() => {
         const token = localStorage.getItem('token-auth');
 
-        if(token) {
-            setUserWithToken(token);
+        const getUser = async () => {
+
+            if(token) {
+                await setUserWithToken(token);
+            }
+    
+            setLoading(false)
         }
+        
+        getUser();
+
     }, []);
 
     const value = {
@@ -56,6 +65,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         setUser,
         setUserWithSingIn,
         setUserWithToken,
+        isLoading,
     };
 
     return (

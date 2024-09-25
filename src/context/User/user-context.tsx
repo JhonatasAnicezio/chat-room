@@ -7,6 +7,7 @@ interface UserContext {
     setUser: (user: Profile | null) => void,
     setUserWithSingIn: (payload: AuthEmailSchema) => void,
     setUserWithToken: (token: string) => void,
+    isLoading: boolean,
 }
 
 export const UserContext = createContext({} as UserContext);
