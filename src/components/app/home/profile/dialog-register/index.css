@@ -1,0 +1,23 @@
+@tailwind base;
+
+@layer base {
+    .container-register-profile {
+        @apply flex items-center justify-center w-full h-[94.2%] absolute bg-[#18181B] text-white
+    }
+
+    .container-register-profile form {
+        @apply flex items-center flex-col gap-5 w-96
+    }
+
+    .container-register-profile form label {
+        @apply text-3xl font-bold
+    }
+
+    .container-register-profile form input {
+        @apply flex font-medium pl-4 text-base items-center justify-center gap-2 w-full h-12 rounded-xl bg-transparent border border-[#333333]
+    }
+
+    .container-register-profile form button {
+        @apply flex font-medium text-base items-center justify-center gap-2 w-full h-12 rounded-xl text-black bg-[#eeeeee]
+    }
+}
