@@ -1,15 +1,23 @@
-export interface User {
-    token: Token,
-    user: [ Profile ]
-}
-
 export interface Profile {
-    providerId: string,
-    uid: string,
-    displayName: string,
+    name: string,
+    iss: string,
+    aud: string,
+    auth_time: number,
+    user_id: string,
+    sub: string,
+    iat: number,
+    exp: number,
     email: string,
-    phoneNumber: string | null,
-    photoURL: string | null
+    email_verified: boolean,
+    firebase: {
+        identities: {
+            email: [
+                string
+            ]
+        },
+        sign_in_provider: string
+    },
+    uid: string
 }
 
 export type Token = string;

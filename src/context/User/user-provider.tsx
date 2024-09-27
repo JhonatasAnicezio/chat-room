@@ -3,47 +3,43 @@ import React, { useCallback, useEffect, useState } from "react";
 import { UserContext } from "./user-context";
 import { Profile, Token } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
-import { singIn, singInWithToken, updateDisplayName } from "@/service/authentication";
+import { singIn, getUser, updateDisplayName } from "@/service/authentication";
 import { useRouter } from "next/navigation";
 
 export default function UserProvider({ children }: Readonly<{ children: React.ReactNode }>) {
     const [user, setUser] = useState<Profile | null>(null);
     const [isLoading, setLoading] = useState<boolean>(true);
-    const [token, setToken] = useState<string | null>(null);
 
     const router = useRouter();
 
-    const setUserWithSingIn = async ({ email, password }: AuthEmailSchema) => {
+    const getTokenAndSingIn = async ({ email, password }: AuthEmailSchema) => {
         const data = await singIn({ email, password });
 
         if (!data) {
             throw new Error('Usuario não encontrado');
         }
 
-        const { user } = data;
-        const { token } = data;
+        setUserWithToken(data);
 
-        localStorage.setItem('token-auth', token)
+        localStorage.setItem('token-auth', data)
 
-        setUser(user[0]);
         router.push('/');
     }
 
     const setUserWithToken = useCallback(async (tokenLocal: Token) => {
-        const data = await singInWithToken(tokenLocal);
-
-        if (!data) {
-            throw new Error('Usuario não encontrado');
+        try {
+            const data = await getUser(tokenLocal);
+            
+            if (!data) {
+                throw new Error('Usuario não encontrado');
+            }
+    
+            setUser(data);
+            router.push('/');
+        } catch (error) {
+            localStorage.removeItem('token-auth');
         }
 
-        const { user } = data;
-        const { token } = data;
-
-        setToken(token);
-        localStorage.setItem('token-auth', token)
-
-        setUser(user[0]);
-        router.push('/');
     }, []);
 
     const updateName = async (name: string) => {
@@ -51,7 +47,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         await updateDisplayName(name);
 
         if (user)
-        setUser({ ...user, displayName: name });
+        setUser({ ...user, name });
 
         setTimeout(() => {
             setLoading(false);
@@ -79,7 +75,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
     const value = {
         user,
         setUser,
-        setUserWithSingIn,
+        getTokenAndSingIn,
         setUserWithToken,
         isLoading,
         updateName,
