@@ -13,6 +13,14 @@
         @apply flex flex-col gap-5 w-[80%] p-10 overflow-auto
     }
 
+    .header-rooms {
+        @apply flex w-full items-center justify-between
+    }
+
+    .header-rooms .button-create {
+        @apply px-3 py-1.5 text-xs font-extrabold rounded-sm bg-[#2B2D31] text-white
+    }
+
     .container-rooms .div-description {
         @apply flex flex-col gap-2
     }

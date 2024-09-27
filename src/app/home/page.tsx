@@ -9,13 +9,20 @@ export default async function Home() {
         <Profile />
 
         <section className="container-rooms">
-          <div className="div-description">
-            <h1>Salas de BatePapo</h1>
-            <p>Venha conversar com pessoas que compartilham do mesmo interesse!</p>
+          <div className="header-rooms">
+            <div className="div-description">
+              <h1>Salas de BatePapo</h1>
+              <p>Venha conversar com pessoas que compartilham do mesmo interesse!</p>
+            </div>
+
+            <button className="button-create">
+              CRIAR SALA
+            </button>
+
           </div>
 
           <div className="rooms">
-            <Rooms />
+            <Rooms/>
           </div>
         </section>
       </div>
