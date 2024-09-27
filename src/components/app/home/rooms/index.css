@@ -1,0 +1,23 @@
+@tailwind base;
+
+@layer base {
+    .div-room {
+        @apply flex flex-col gap-1 w-[19.5%]
+    }
+
+    .banner-cover {
+        @apply py-1 w-full h-[165px] bg-black
+    }
+
+    .div-room h2 {
+        @apply font-semibold
+    }
+
+    .div-room .div-subject {
+        @apply flex gap-2
+    }
+
+    .div-room .div-subject span {
+        @apply text-xs font-extrabold px-3 py-1 rounded-full bg-[#616266] text-white
+    }
+}
