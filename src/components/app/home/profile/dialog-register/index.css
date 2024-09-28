@@ -2,7 +2,7 @@
 
 @layer base {
     .container-register-profile {
-        @apply flex items-center justify-center w-full h-[94.2%] absolute bg-[#18181B] text-white
+        @apply flex items-center justify-center w-full h-screen absolute bg-[#18181B] text-white inset-0
     }
 
     .container-register-profile form {
