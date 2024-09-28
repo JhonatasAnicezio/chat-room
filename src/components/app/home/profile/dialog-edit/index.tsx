@@ -54,7 +54,7 @@ export function DialogEdit() {
                         <input
                             {...register('displayName')}
                             maxLength={20}
-                            defaultValue={user ? user.displayName : ''}
+                            defaultValue={user ? user.name : ''}
                             id="display-name"
                         />
                     </div>
