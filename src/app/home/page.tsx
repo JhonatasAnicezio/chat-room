@@ -1,6 +1,7 @@
 import Rooms from '@/components/app/home/rooms';
 import './index.css';
 import Profile from "@/components/app/home/profile";
+import CreateRoom from '@/components/app/home/rooms/dialog-create-room';
 
 export default async function Home() {
   return (
@@ -15,9 +16,7 @@ export default async function Home() {
               <p>Venha conversar com pessoas que compartilham do mesmo interesse!</p>
             </div>
 
-            <button className="button-create">
-              CRIAR SALA
-            </button>
+            <CreateRoom />
 
           </div>
 

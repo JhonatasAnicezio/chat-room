@@ -10,7 +10,7 @@
     }
 
     .container-rooms {
-        @apply flex flex-col gap-5 w-[80%] p-10 overflow-auto
+        @apply flex flex-col gap-5 w-full p-10 overflow-auto
     }
 
     .header-rooms {
