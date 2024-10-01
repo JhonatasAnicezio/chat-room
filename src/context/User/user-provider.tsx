@@ -26,7 +26,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         router.push('/');
     }
 
-    const setUserWithToken = useCallback(async (tokenLocal: Token) => {
+    const setUserWithToken = async (tokenLocal: Token) => {
         try {
             const data = await getUser(tokenLocal);
             
@@ -40,7 +40,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
             localStorage.removeItem('token-auth');
         }
 
-    }, []);
+    }
 
     const updateName = async (name: string) => {
         setLoading(true);
