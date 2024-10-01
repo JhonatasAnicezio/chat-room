@@ -19,22 +19,22 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
             throw new Error('Usuario não encontrado');
         }
 
-        setUserWithToken(data);
+        await setUserWithToken(data);
 
-        localStorage.setItem('token-auth', data)
-
-        router.push('/');
+        localStorage.setItem('token-auth', data);
     }
 
     const setUserWithToken = async (tokenLocal: Token) => {
         try {
             const data = await getUser(tokenLocal);
-            
+            console.log(data);
+
             if (!data) {
                 throw new Error('Usuario não encontrado');
             }
-    
+
             setUser(data);
+
             router.push('/');
         } catch (error) {
             localStorage.removeItem('token-auth');
@@ -47,7 +47,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         await updateDisplayName(name);
 
         if (user)
-        setUser({ ...user, name });
+            setUser({ ...user, name });
 
         setTimeout(() => {
             setLoading(false);
@@ -59,7 +59,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
         const getUser = async () => {
 
-            if(token) {
+            if (token) {
                 await setUserWithToken(token);
             }
 
@@ -67,7 +67,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
                 setLoading(false)
             }, 1000);
         }
-        
+
         getUser();
 
     }, []);
