@@ -1,13 +1,28 @@
 import { Room } from "@/types/Room";
 import { roomApi } from "../api";
 import { AxiosResponse } from "axios";
+import { CreateRoomSchema } from "@/components/app/home/rooms/dialog-create-room/create-room-schema";
 
-export default async function findAllRooms() {
+export async function findAllRooms() {
     try {
         const { data }: AxiosResponse<Room[]> = await roomApi.get('/');
 
         return data;
     } catch (error) {
         return null;
+    }
+}
+
+export async function createRoom({ name, subjects, idAuthor }: CreateRoomSchema, token: string) {
+    try {
+        const { data }: AxiosResponse<Room> = await roomApi.post('/', { name, subjects, idAuthor }, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+
+        return data;
+    } catch (error: any) {
+        throw new Error(error.message);
     }
 }
