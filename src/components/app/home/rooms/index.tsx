@@ -1,4 +1,4 @@
-import findAllRooms from "@/service/rooms";
+import { findAllRooms } from "@/service/rooms";
 import Link from "next/link";
 import './index.css';
 
@@ -14,7 +14,7 @@ export default async function Rooms() {
                     <h2>{room.name}</h2>
 
                     <div className="div-subject">
-                        {room.subject.map((e, index) => (
+                        {room.subjects.map((e, index) => (
                             <span key={index}>{e}</span>
                         ))}
                     </div>

@@ -3,7 +3,7 @@ import { Message } from "./Message";
 export interface Room {
     _id: string,
     name: string,
-    subject: string[],
+    subjects: string[],
     createAt: Date,
     idAuthor: string,
     messages: Message[],
