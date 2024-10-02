@@ -1,0 +1,35 @@
+@tailwind base;
+
+@layer base {
+    .form-create-room {
+        @apply flex flex-col items-end gap-4 py-4
+    }
+
+    .form-create-room .div-create-room {
+        @apply flex flex-col items-start gap-4 w-full relative
+    }
+
+    .form-create-room .div-create-room label {
+        @apply text-xs font-extrabold text-[#B5B8A1]
+    }
+
+    .form-create-room .div-create-room input {
+        @apply w-full rounded-sm px-2 py-1 bg-[#2B2D31] focus:outline-none font-light
+    }
+
+    .form-create-room .div-create-room button {
+        @apply absolute right-0 font-bold text-xs px-2 py-0.5 rounded-sm bg-[#2b2929]
+    }
+
+    .div-subject-create {
+        @apply flex gap-2
+    }
+
+    .div-subject-create span {
+        @apply flex items-center text-xs font-bold pl-3 py-1 rounded-full bg-[#616266] text-white
+    }
+
+    .div-subject-create button {
+        @apply px-2 right-1 top-[20%]
+    }
+}
