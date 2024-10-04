@@ -21,7 +21,7 @@ export default function CreateRoom() {
         return null;
     }
 
-    const { register, setValue, handleSubmit, formState: { errors }, getValues } = useForm<CreateRoomSchema>({
+    const { register, setValue, handleSubmit, formState: { errors }, setError } = useForm<CreateRoomSchema>({
         resolver: zodResolver(createRoomSchema),
     });
 
@@ -47,9 +47,14 @@ export default function CreateRoom() {
         const token = localStorage.getItem('token-auth');
 
         if (token) {
-            await createRoom({ name, subjects, idAuthor: user.uid }, token);
+            try {
+                await createRoom({ name, subjects, idAuthor: user.uid }, token);
 
-            router.refresh();
+                router.refresh();
+            } catch (error: any) {
+                setError('root', { message: error.message });
+            }
+
         }
     }
 
@@ -75,9 +80,10 @@ export default function CreateRoom() {
                         </label>
                         <input
                             {...register('name')}
-                            maxLength={20}
+                            maxLength={15}
                         />
                     </div>
+                    {errors.name && <span className="span-error">{errors.name.message}</span>}
 
                     {/* <div className="div-create-room">
                         <label htmlFor="name">
@@ -90,7 +96,7 @@ export default function CreateRoom() {
                     </div> */}
 
                     <div className="div-create-room">
-                        <label htmlFor="name">
+                        <label htmlFor="subject">
                             ASSUNTOS
                         </label>
                         <input
@@ -99,10 +105,11 @@ export default function CreateRoom() {
                             value={valueInputSubject}
                             placeholder="Adicione até 3 assuntos"
                             maxLength={15}
-                            id="display-name"
                         />
                         <button onClick={() => addSubject(valueInputSubject)} type="button">Adicionar</button>
                     </div>
+                    {errors.subjects && <span className="span-error">{errors.subjects.message}</span>}
+                    {errors.root && <span className="span-error">{errors.root.message}</span>}
 
                     <div className="div-subject-create">
                         {subjects.map((e, index) =>
@@ -119,7 +126,7 @@ export default function CreateRoom() {
                     <button
                         disabled={subjects.length === 0 ? true : false}
                         type="submit"
-                        className={`btn-save ${subjects.length === 3 && 'bg-[#2B2D31]'}`}
+                        className={`button-save ${subjects.length === 0 && 'opacity-50'}`}
                     >
                         Criar
                     </button>

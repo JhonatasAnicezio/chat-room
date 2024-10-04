@@ -1,6 +1,6 @@
 import { Room } from "@/types/Room";
 import { roomApi } from "../api";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { CreateRoomSchema } from "@/components/app/home/rooms/dialog-create-room/create-room-schema";
 
 export async function findAllRooms() {
@@ -22,7 +22,9 @@ export async function createRoom({ name, subjects, idAuthor }: CreateRoomSchema,
         });
 
         return data;
-    } catch (error: any) {
-        throw new Error(error.message);
+    } catch (error: AxiosError | unknown) {
+        if (error instanceof AxiosError) {
+            const message = error.response?.data.message;
+        }
     }
 }

@@ -32,4 +32,12 @@
     .div-subject-create button {
         @apply px-2 right-1 top-[20%]
     }
+
+    .form-create-room .button-save {
+        @apply px-3 py-0.5 bg-green-600 text-white rounded-sm text-base font-semibold
+    }
+
+    .form-create-room .span-error {
+        @apply text-xs text-red-500
+    }
 }
