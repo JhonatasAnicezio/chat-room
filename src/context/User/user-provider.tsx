@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserContext } from "./user-context";
 import { Profile, Token } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
@@ -35,7 +35,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
             setUser(data);
 
-            router.push('/');
+            router.refresh();
         } catch (error) {
             localStorage.removeItem('token-auth');
         }
