@@ -4,7 +4,7 @@
 
 @layer base {
   .form-send-message {
-    @apply flex items-center justify-center w-full p-5;
+    @apply flex items-center justify-center p-5 w-full h-[5%];
   }
 
   .form-send-message .input {

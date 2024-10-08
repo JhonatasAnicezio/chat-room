@@ -4,7 +4,7 @@
 
 @layer base {
     .container-message {
-        @apply flex gap-3 items-start justify-start;
+        @apply flex gap-3 items-start justify-start w-full;
     }
 
     .container-message .icon {

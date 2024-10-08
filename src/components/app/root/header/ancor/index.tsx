@@ -2,6 +2,7 @@
 import { UserContext } from "@/context/User/user-context";
 import Link from "next/link";
 import { useContext } from "react";
+import Cookies from 'js-cookie';
 
 export default function Ancor() {
     const { user, setUser } = useContext(UserContext);
@@ -10,8 +11,8 @@ export default function Ancor() {
         return (
             <button
                 onClick={() => {
-                    setUser(null);
-                    localStorage.removeItem('token-auth');
+                    Cookies.remove('token');
+                    window.location.reload();
                 }}
                 className="bg-red-500 px-5 py-0.5 rounded-sm"
             >
