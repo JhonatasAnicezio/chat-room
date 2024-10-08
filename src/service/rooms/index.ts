@@ -25,6 +25,21 @@ export async function createRoom({ name, subjects, idAuthor }: CreateRoomSchema,
     } catch (error: AxiosError | unknown) {
         if (error instanceof AxiosError) {
             const message = error.response?.data.message;
+            throw new Error(message);
         }
+    }
+}
+
+export async function findById(id: string, token: string) {
+    try {
+        const { data }: AxiosResponse<Room> = await roomApi.get(`/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+
+        return data;
+    } catch (error) {
+        return null;
     }
 }
