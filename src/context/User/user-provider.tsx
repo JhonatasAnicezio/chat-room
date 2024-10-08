@@ -5,6 +5,7 @@ import { Profile, Token } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
 import { singIn, getUser, updateDisplayName } from "@/service/authentication";
 import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
 
 export default function UserProvider({ children }: Readonly<{ children: React.ReactNode }>) {
     const [user, setUser] = useState<Profile | null>(null);
@@ -21,13 +22,12 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
         await setUserWithToken(data);
 
-        localStorage.setItem('token-auth', data);
+        Cookies.set('token', data);
     }
 
     const setUserWithToken = async (tokenLocal: Token) => {
         try {
             const data = await getUser(tokenLocal);
-            console.log(data);
 
             if (!data) {
                 throw new Error('Usuario não encontrado');
@@ -37,7 +37,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
             router.refresh();
         } catch (error) {
-            localStorage.removeItem('token-auth');
+            Cookies.remove('token');
         }
 
     }
@@ -55,7 +55,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('token-auth');
+        const token = Cookies.get('token');
 
         const getUser = async () => {
 
