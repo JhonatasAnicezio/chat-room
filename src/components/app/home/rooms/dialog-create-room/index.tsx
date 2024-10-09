@@ -8,6 +8,7 @@ import { createRoom } from "@/service/rooms";
 import './index.css';
 import { UserContext } from "@/context/User/user-context";
 import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
 
 export default function CreateRoom() {
     const [subjects, setSubjects] = useState<string[]>([]);
@@ -44,13 +45,13 @@ export default function CreateRoom() {
     };
 
     const ConsoleCreateRoom = async ({ name, subjects }: CreateRoomSchema) => {
-        const token = localStorage.getItem('token-auth');
+        const token = Cookies.get('token');
 
         if (token) {
             try {
                 await createRoom({ name, subjects, idAuthor: user.uid }, token);
 
-                router.refresh();
+                window.location.reload();
             } catch (error: any) {
                 setError('root', { message: error.message });
             }
