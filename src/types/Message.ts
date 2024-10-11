@@ -3,4 +3,5 @@ export type Message = {
     text: string,
     createAt: Date,
     author: string,
+    photoAuthorURL: string,
 }
