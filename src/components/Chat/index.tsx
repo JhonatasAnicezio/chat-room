@@ -17,8 +17,16 @@ export default function Chat({ roomId }: ChatProps) {
 
     return (
         <ol className="flex flex-col-reverse gap-5 p-5 w-full h-[97%] overflow-y-auto custom-scrollbar">
-            {messages.map(({ text, author, createAt, id }, index) =>
-                <li key={index}><ContainerMessage text={text} id={id} createAt={createAt} author={author} /></li>
+            {messages.map(({ text, author, createAt, id, photoAuthorURL }, index) =>
+                <li key={index}>
+                    <ContainerMessage
+                        photoAuthorURL={photoAuthorURL}
+                        text={text}
+                        id={id}
+                        createAt={createAt}
+                        author={author}
+                    />
+                </li>
             )}
         </ol>
     )

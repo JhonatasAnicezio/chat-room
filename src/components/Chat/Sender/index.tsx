@@ -24,6 +24,7 @@ export default function Sender({ id }: SenderProps) {
       text: message,
       createAt: new Date(),
       author: user?.name,
+      photoAuthorURL: user?.photoURL,
     }
 
     socket.emit('send-message', { newMessage, id });
