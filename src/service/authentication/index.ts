@@ -49,9 +49,13 @@ export async function getUser(token: Token) {
     }
 }
 
-export async function updateDisplayName(name: string) {
+export async function updateProfile(name: string, photoURL: string, token: string) {
     try {
-        await authApi.put('/display-name', { name });
+        await authApi.put('/update-profile', { name, photoURL }, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
     } catch (error: AxiosError | unknown) {
         if(error instanceof AxiosError) {
             const message = error.response?.data.message;
