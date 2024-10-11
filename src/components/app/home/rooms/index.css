@@ -6,7 +6,7 @@
     }
 
     .banner-cover {
-        @apply py-1 w-full h-[165px] bg-black
+        @apply py-1 w-full h-[165px] bg-black relative
     }
 
     .div-room h2 {

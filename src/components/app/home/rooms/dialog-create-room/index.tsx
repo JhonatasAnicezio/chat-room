@@ -7,14 +7,15 @@ import { useContext, useState } from "react";
 import { createRoom } from "@/service/rooms";
 import './index.css';
 import { UserContext } from "@/context/User/user-context";
-import { useRouter } from "next/navigation";
 import Cookies from 'js-cookie';
+import Image from "next/image";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "@/service/firebase";
 
 export default function CreateRoom() {
     const [subjects, setSubjects] = useState<string[]>([]);
     const [valueInputSubject, setValueInputSubject] = useState<string>("");
-
-    const router = useRouter();
+    const [preview, setPreview] = useState<string | null>(null);
 
     const { user } = useContext(UserContext);
 
@@ -44,12 +45,29 @@ export default function CreateRoom() {
         setValueInputSubject(''); // Limpa o campo de input
     };
 
-    const ConsoleCreateRoom = async ({ name, subjects }: CreateRoomSchema) => {
+    const getImageWithInput = ({ target: { files } }: React.ChangeEvent<HTMLInputElement>) => {
+        if (files) {
+            setValue('image', files[0]);
+            setPreview(URL.createObjectURL(files[0]));
+        }
+    }
+
+    const sendNewRoom = async ({ name, subjects, image }: CreateRoomSchema) => {
         const token = Cookies.get('token');
+
+        const storageRef = ref(storage, `rooms/${image.name}`);
 
         if (token) {
             try {
-                await createRoom({ name, subjects, idAuthor: user.uid }, token);
+                //upload image
+                await uploadBytes(storageRef, image);
+
+                //get image
+                const url = await getDownloadURL(storageRef);
+
+                console.log(url, 'teste')
+
+                await createRoom({ name, subjects, idAuthor: user.uid, image: url }, token);
 
                 window.location.reload();
             } catch (error: any) {
@@ -72,9 +90,34 @@ export default function CreateRoom() {
                     </DialogDescription>
                 </DialogHeader>
                 <form
-                    onSubmit={handleSubmit(ConsoleCreateRoom)}
+                    onSubmit={handleSubmit(sendNewRoom)}
                     className="form-create-room"
                 >
+                    <div className="div-create-room">
+                        <label className="flex justify-center items-center w-full h-48 rounded-lg border" htmlFor="image">
+                            {preview && (
+                                <div className="absolute w-full h-full rounded-full">
+                                    <Image
+                                        className="w-full h-full"
+                                        src={preview}
+                                        alt="Preview da Imagem"
+                                        fill
+                                    />
+                                </div>
+                            )}
+                            IMAGEM DA SALA
+                        </label>
+                        <input
+                            id="image"
+                            className="hidden"
+                            onChange={getImageWithInput}
+                            type="file"
+                        />
+                    </div>
+                    {errors.image && typeof errors.image.message === "string" && (
+                        <span className="text-red-500 text-xs">{errors.image.message}</span>
+                    )}
+
                     <div className="div-create-room">
                         <label htmlFor="name">
                             NOME DA SALA
@@ -86,15 +129,6 @@ export default function CreateRoom() {
                     </div>
                     {errors.name && <span className="span-error">{errors.name.message}</span>}
 
-                    {/* <div className="div-create-room">
-                        <label htmlFor="name">
-                            URL DA IMAGEM
-                        </label>
-                        <input
-                            {...register('imgUrl')}
-                            maxLength={20}
-                        />
-                    </div> */}
 
                     <div className="div-create-room">
                         <label htmlFor="subject">
