@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { UserContext } from "./user-context";
 import { Profile, Token } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
-import { singIn, getUser, updateDisplayName } from "@/service/authentication";
+import { singIn, getUser, updateProfile } from "@/service/authentication";
 import { useRouter } from "next/navigation";
 import Cookies from 'js-cookie';
 
@@ -29,6 +29,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         try {
             const data = await getUser(tokenLocal);
 
+            console.log(data);
             if (!data) {
                 throw new Error('Usuario não encontrado');
             }
@@ -42,12 +43,16 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
     }
 
-    const updateName = async (name: string) => {
+    const updateProfileAndUploadImage = async (name: string, photoURL: string) => {
         setLoading(true);
-        await updateDisplayName(name);
+
+        const token = Cookies.get('token');
+
+        if(!token) throw new Error();
+        await updateProfile(name, photoURL, token);
 
         if (user)
-            setUser({ ...user, name });
+            setUser({ ...user, name, photoURL });
 
         setTimeout(() => {
             setLoading(false);
@@ -78,7 +83,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         getTokenAndSingIn,
         setUserWithToken,
         isLoading,
-        updateName,
+        updateProfileAndUploadImage,
     };
 
     return (

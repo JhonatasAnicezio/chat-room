@@ -8,7 +8,7 @@ interface UserContext {
     getTokenAndSingIn: (payload: AuthEmailSchema) => void,
     setUserWithToken: (token: string) => void,
     isLoading: boolean,
-    updateName: (name: string) => void,
+    updateProfileAndUploadImage: (name: string, photoURL: string) => void,
 }
 
 export const UserContext = createContext({} as UserContext);
