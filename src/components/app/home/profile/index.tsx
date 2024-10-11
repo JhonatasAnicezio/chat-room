@@ -20,8 +20,8 @@ export default function Profile() {
                     <div className='banner' />
                     <div className='description'>
                         <div className='photo-user'>
-                            {false &&
-                                <Image alt='img profile' className='rounded-full' src={'foto'} width={100} height={100} />
+                            {user.photoURL &&
+                                <Image alt='img profile' className='rounded-full' src={user.photoURL} width={100} height={100} />
                             }
                         </div>
                         <DialogEdit />

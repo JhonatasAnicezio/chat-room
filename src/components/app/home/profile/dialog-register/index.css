@@ -9,7 +9,7 @@
         @apply flex items-center flex-col gap-5 w-96
     }
 
-    .container-register-profile form label {
+    .container-register-profile form h1 {
         @apply text-3xl font-bold
     }
 
@@ -19,5 +19,21 @@
 
     .container-register-profile form button {
         @apply flex font-medium text-base items-center justify-center gap-2 w-full h-12 rounded-xl text-black bg-[#eeeeee]
+    }
+
+    .container-register-profile form .upload-image  {
+        @apply flex flex-col gap-2 items-center justify-center w-44 h-44 rounded-full relative border-2 hover:cursor-pointer
+    }
+
+    .container-register-profile form .upload-image svg {
+        @apply text-4xl
+    }
+
+    .container-register-profile form .upload-image p {
+        @apply text-xs
+    }
+
+    .container-register-profile form .upload-image input {
+        @apply hidden
     }
 }

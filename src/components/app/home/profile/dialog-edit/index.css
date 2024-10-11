@@ -21,6 +21,22 @@
         @apply col-span-3 rounded-sm px-2 py-1 bg-[#2B2D31] focus:outline-none font-light
     }
 
+    .form-content-dialog .upload-image  {
+        @apply flex flex-col gap-2 items-center justify-center w-44 h-44 rounded-full relative border-2 hover:cursor-pointer mx-[30%]
+    }
+
+    .form-content-dialog .upload-image svg {
+        @apply text-4xl
+    }
+
+    .form-content-dialog .upload-image p {
+        @apply text-xs
+    }
+
+    .form-content-dialog .upload-image input {
+        @apply hidden
+    }
+
     .container-dialog .btn-save {
         @apply px-3 py-0.5 bg-green-600 text-white rounded-sm text-base font-semibold
     }
