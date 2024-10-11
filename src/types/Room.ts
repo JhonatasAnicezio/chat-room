@@ -7,4 +7,5 @@ export interface Room {
     createAt: Date,
     idAuthor: string,
     messages: Message[],
+    imgUrl: string;
 }
