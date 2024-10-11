@@ -13,9 +13,9 @@ export async function findAllRooms() {
     }
 }
 
-export async function createRoom({ name, subjects, idAuthor }: CreateRoomSchema, token: string) {
+export async function createRoom({ name, subjects, idAuthor, image }: CreateRoomSchema, token: string) {
     try {
-        const { data }: AxiosResponse<Room> = await roomApi.post('/', { name, subjects, idAuthor }, {
+        const { data }: AxiosResponse<Room> = await roomApi.post('/', { name, subjects, idAuthor, imgUrl: image }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
