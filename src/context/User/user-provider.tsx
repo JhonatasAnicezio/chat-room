@@ -75,7 +75,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
         getUser();
 
-    }, []);
+    });
 
     const value = {
         user,

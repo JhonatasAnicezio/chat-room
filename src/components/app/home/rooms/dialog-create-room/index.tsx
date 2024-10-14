@@ -19,13 +19,13 @@ export default function CreateRoom() {
 
     const { user } = useContext(UserContext);
 
-    if (!user) {
-        return null;
-    }
-
     const { register, setValue, handleSubmit, formState: { errors }, setError } = useForm<CreateRoomSchema>({
         resolver: zodResolver(createRoomSchema),
     });
+
+    if (!user) {
+        return null;
+    }
 
     setValue('idAuthor', user.uid);
 

@@ -16,27 +16,27 @@ interface PageChatProps {
 
 export default function PageChat({ params }: PageChatProps) {
     const [data, setData] = useState<Room | null>(null);
-    const token = Cookies.get('token');
     const router = useRouter();
+    const token = Cookies.get('token');
 
-    if (!token) {
-        router.push('/auth/login');
-        return null;
-    }
-
-    const fetchRoom = async () => {
-        const room = await findById(params[':id'], token);
-
-        if (!room) {
-            router.push('/');
+    useEffect((): void => {
+        if (!token) {
+            router.push('/auth/login');
+            return;
         }
 
-        setData(room);
-    };
+        const fetchRoom = async () => {
+            const room = await findById(params[':id'], token);
 
-    useEffect(() => {
+            if (!room) {
+                router.push('/');
+            }
+
+            setData(room);
+        };
+
         fetchRoom();
-    }, [])
+    })
 
     if (!data) {
         return <div className="absolute w-full h-screen top-0 left-0 bg-[#1E1F22]" />

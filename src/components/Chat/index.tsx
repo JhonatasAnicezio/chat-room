@@ -13,7 +13,7 @@ export default function Chat({ roomId }: ChatProps) {
 
     useEffect(() => {
         socket.emit('start-chat', roomId);
-    }, [])
+    }, [roomId])
 
     return (
         <ol className="flex flex-col-reverse gap-5 p-5 w-full h-[97%] overflow-y-auto custom-scrollbar">
