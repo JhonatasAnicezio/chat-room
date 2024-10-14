@@ -8,7 +8,7 @@ export default function Header() {
         <header className="container-header">
             <h1>TheChat</h1>
 
-            <div className="container-input">
+            {/* <div className="container-input">
                 <input
                     placeholder="Buscar"
                 />
@@ -16,7 +16,7 @@ export default function Header() {
                 <button>
                     <FaMagnifyingGlass />
                 </button>
-            </div>
+            </div> */}
 
             <div className="container-auth">
                 <Ancor />
