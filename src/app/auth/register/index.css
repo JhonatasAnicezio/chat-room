@@ -10,7 +10,7 @@
     }
 
     .div-register {
-        @apply flex flex-col w-80
+        @apply flex flex-col w-96
     }
 
     .div-register h1 {
