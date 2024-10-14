@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { UserContext } from "./user-context";
 import { Profile, Token } from "@/types/User";
 import { AuthEmailSchema } from "@/components/authentication/auth-email/auth-email-schema";
@@ -25,11 +25,10 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         Cookies.set('token', data);
     }
 
-    const setUserWithToken = async (tokenLocal: Token) => {
+    const setUserWithToken = useCallback(async (tokenLocal: Token) => {
         try {
             const data = await getUser(tokenLocal);
 
-            console.log(data);
             if (!data) {
                 throw new Error('Usuario não encontrado');
             }
@@ -41,7 +40,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
             Cookies.remove('token');
         }
 
-    }
+    }, [router]);
 
     const updateProfileAndUploadImage = async (name: string, photoURL: string) => {
         setLoading(true);
@@ -75,7 +74,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
         getUser();
 
-    });
+    }, [setUserWithToken]);
 
     const value = {
         user,
