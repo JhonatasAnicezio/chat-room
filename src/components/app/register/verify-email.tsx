@@ -18,8 +18,8 @@ export default function VerifyEmail() {
                 Certifique-se de checar a pasta de spam ou lixo eletrônico caso não encontre o email.
             </p>
 
-            <Link href={'/'}>
-               {`<- voltar ao site`}
+            <Link href={'/auth/login'}>
+               {`<- ir até a pagina de login`}
             </Link>
         </main>
     )
