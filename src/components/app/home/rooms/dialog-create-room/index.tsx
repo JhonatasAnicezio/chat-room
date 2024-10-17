@@ -82,7 +82,7 @@ export default function CreateRoom() {
             <DialogTrigger asChild>
                 <button className="button-create">Criar Sala</button>
             </DialogTrigger>
-            <DialogContent className="container-dialog">
+            <DialogContent className="container-dialog bg-[#18181B]">
                 <DialogHeader>
                     <DialogTitle>Criar sala de bate-papo</DialogTitle>
                     <DialogDescription>

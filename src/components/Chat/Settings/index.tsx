@@ -40,7 +40,7 @@ export default function Settings({ idAuthor, idRoom }: SettingsProps) {
                             <CiSettings />
                         </button>
                     </DialogTrigger>
-                    <DialogContent className="container-dialog">
+                    <DialogContent className="container-dialog bg-[#18181B]">
                         <DialogHeader>
                             <DialogTitle>Configurações</DialogTitle>
                             <DialogDescription>

@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form"
 import { authEmailSchema, AuthEmailSchema } from "./auth-email-schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 
+import { useContext } from "react"
+import { UserContext } from "@/context/User/user-context"
 import './index.css'
 
 interface AuthEmailProps {
@@ -11,6 +13,8 @@ interface AuthEmailProps {
 }
 
 export default function AuthEmail({ action, authType }: AuthEmailProps) {
+    const { isLoading, setLoading } = useContext(UserContext);
+
     const {
         register,
         handleSubmit,
@@ -21,11 +25,18 @@ export default function AuthEmail({ action, authType }: AuthEmailProps) {
     });
 
     const submitEmailAction = async ({ email, password }: AuthEmailSchema) => {
+        setLoading(true);
+
         try {
             await action({ email, password });
+
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000)
         } catch (error) {
             if (error instanceof Error) {
                 setError('password', { type: 'manual', message: error.message });
+                setLoading(false);
             }
         }
     }
@@ -61,7 +72,7 @@ export default function AuthEmail({ action, authType }: AuthEmailProps) {
 
             <button
                 type="submit"
-                className="submit"
+                className={`submit ${isLoading && 'opacity-50'}`}
             >
                 {authType}
             </button>

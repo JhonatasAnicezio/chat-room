@@ -8,6 +8,7 @@ interface UserContext {
     getTokenAndSingIn: (payload: AuthEmailSchema) => void,
     setUserWithToken: (token: string) => void,
     isLoading: boolean,
+    setLoading: (isLoading: boolean) => void,
     updateProfileAndUploadImage: (name: string, photoURL: string) => void,
 }
 

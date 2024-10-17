@@ -47,7 +47,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
 
         const token = Cookies.get('token');
 
-        if(!token) throw new Error();
+        if (!token) throw new Error();
         await updateProfile(name, photoURL, token);
 
         if (user)
@@ -82,6 +82,7 @@ export default function UserProvider({ children }: Readonly<{ children: React.Re
         getTokenAndSingIn,
         setUserWithToken,
         isLoading,
+        setLoading,
         updateProfileAndUploadImage,
     };
 
